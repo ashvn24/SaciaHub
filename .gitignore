@@ -1,0 +1,60 @@
+# Byte-compiled / optimized Python files
+__pycache__/
+*.py[cod]
+venvhubapi
+hubenv
+saciaenv
+# C extensions
+*.so
+res.json
+docs.md
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+app.log
+*.log*
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDEs and editors
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*.bak
+*.pyc
+*.bak
+*.cache
+
+# Miscellaneous
+*.log
+*.bak
+*.lock
+*.tmp
+
+# Ignore local configuration files
+.env
+*.csv
+venv*

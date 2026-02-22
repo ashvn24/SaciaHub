@@ -1,0 +1,68 @@
+trigger:
+  - main
+
+stages:
+  - stage: Approval
+    jobs:
+      - job: ApprovalJob
+        timeoutInMinutes: 1440
+        displayName: 'Manual Approval'
+        pool:
+          name: server
+        steps:
+          - task: ManualValidation@0
+            displayName: 'Request Approval'
+            inputs:
+              instructions: 'Please review and approve the build.'
+              notifyUsers: |
+                svettukattilramadas@blackrockitsolutions.com
+                
+
+  - stage: Build
+    pool:
+      name: saciahbu
+      demands:
+        - agent.name -equals sc_be
+    dependsOn: Approval
+    jobs:
+      - job: BuildJob
+        displayName: 'Deploy approved commit'
+        steps:
+          # This checks out the exact commit that triggered the pipeline
+          - checkout: self
+            fetchDepth: 0
+
+          - script: |
+              echo "=== Copying pipeline code to deployment directory ==="
+              rsync -av --exclude '.env' ./ /backend/hubapi/
+
+              echo "=== Latest deployed commit ==="
+              git log -1 --oneline
+
+              echo "=== Reloading systemd ==="
+              sudo systemctl daemon-reload
+
+              echo "=== Restarting uvicorn.service ==="
+              if sudo systemctl restart uvicorn.service; then
+                 echo "uvicorn.service restarted successfully"
+              else
+                 echo "Failed to restart uvicorn.service"
+                 exit 1
+              fi
+
+              echo "=== Restarting nginx ==="
+              if sudo systemctl restart nginx; then
+                 echo "nginx restarted successfully"
+              else
+                 echo "Failed to restart nginx"
+                 exit 1
+              fi
+
+              echo "=== Checking uvicorn.service status ==="
+              systemctl is-active --quiet uvicorn.service || exit 1
+
+              echo "=== Checking nginx status ==="
+              systemctl is-active --quiet nginx || exit 1
+
+            displayName: 'Deploy and restart services'
+ 
