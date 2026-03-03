@@ -260,7 +260,7 @@ async def reset_password_route(
         user_query = text(f'SELECT * FROM {user_table_name} WHERE "Email" = :Username')
         user_result = db.execute(user_query, {"Username": data.get("Username")})
         user_row = user_result.mappings().one_or_none()
-
+        print("user details", user_row)
         if user_row is None:
             return JSONResponse(
                 status_code=status.HTTP_404_NOT_FOUND,
