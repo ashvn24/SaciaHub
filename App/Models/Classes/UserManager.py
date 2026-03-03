@@ -80,7 +80,7 @@ class UserAuthManager:
     def get_tenant_info(self, company_portal_url: str):
         user = (
             self.db.query(models.TenantInfo)
-            .filter(models.TenantInfo.PortalURL == company_portal_url)
+            .filter(models.TenantInfo.ShortName == company_portal_url)
             .first()
         )
         if user is None:
