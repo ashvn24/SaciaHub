@@ -235,7 +235,7 @@ async def activate_customer_route(
 @company_router.patch("/resetPassword/")
 async def reset_password_route(
     data: dict,
-    token_info: dict = Depends(get_current_user),
+    # token_info: dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
     from Models.Classes.UserManager import UserAuthManager
