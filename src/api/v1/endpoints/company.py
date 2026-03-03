@@ -256,6 +256,7 @@ async def reset_password_route(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 content={"message": "Customer does not exist"},
             )
+        print("user details", user)
         user_table_name = f"{user.SchemaName}.tb_{user.ShortName}_user_info"
         user_query = text(f'SELECT * FROM {user_table_name} WHERE "Email" = :Username')
         user_result = db.execute(user_query, {"Username": data.get("Username")})
