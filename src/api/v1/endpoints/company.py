@@ -248,7 +248,7 @@ async def reset_password_route(
     try:
         user = (
             db.query(models.TenantInfo)
-            .filter(models.TenantInfo.PortalURL == data.get("Company_Shortname"))
+            .filter(models.TenantInfo.ShortName == data.get("Company_Shortname"))
             .first()
         )
         if user is None:
