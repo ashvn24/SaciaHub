@@ -30,6 +30,7 @@ from src.schemas.timeoff import HolidayScheme, TimeOffPolicySchema
 from src.schemas.timesheet import TimpolicySchema, UpdateTimesheet
 from src.schemas.user import AssignClientSchema
 from src.schemas.bgv import verification
+from src.schemas.vendor import VendorSchema
 
 logger = get_logger("api.admin")
 
@@ -504,12 +505,11 @@ async def delete_sow(
 
 @admin_router.post("/vendors/", operation_id="create-vendor")
 async def create_vendor(
-    vendor_data: "VendorSchema",
+    vendor_data: VendorSchema,
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
     from Models.Classes.VendorManager import VendorManager
-    from src.schemas.vendor import VendorSchema  # noqa: F811
 
     _check_token(db, vendor_data.Company_Portal_Url, token_info["Id"])
     vendor_manager = VendorManager(db, token_info, vendor_data.Company_Portal_Url)
@@ -532,13 +532,12 @@ async def get_vendors(
 
 @admin_router.put("/vendors/", operation_id="update-vendor")
 async def update_vendor(
-    vendor_data: "VendorSchema",
+    vendor_data: VendorSchema,
     ID: int,
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
     from Models.Classes.VendorManager import VendorManager
-    from src.schemas.vendor import VendorSchema  # noqa: F811
 
     _check_token(db, vendor_data.Company_Portal_Url, token_info["Id"])
     vendor_manager = VendorManager(db, token_info, vendor_data.Company_Portal_Url)
