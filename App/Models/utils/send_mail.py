@@ -147,7 +147,7 @@ def send_mail(email, FirstName, password, subject, company_portal_url=None, titl
     #     attach_image(os.path.join(base_dir, 'Step2.png'), 'step2')
 
     # response = sg.client.mail.send.post(request_body=mail.get())
-    return response
+    # return response
 
 
 
