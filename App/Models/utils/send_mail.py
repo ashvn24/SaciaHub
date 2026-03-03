@@ -63,6 +63,7 @@ def is_phone_number(number):
 
 
 def send_mail(email, FirstName, password, subject, company_portal_url=None, title=None, timesheet_status=None, admin_name=None, timesheet_date=None, subj_data=None, type=None):
+    print("DATA",email, FirstName, password, subject, company_portal_url, title, timesheet_status, admin_name, timesheet_date, subj_data, type)
     subj = "Welcome to BlackRock IT Solutions!"
     if subject == "reset":
         subj = "Reset Your Password - Action Required"
