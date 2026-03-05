@@ -22,7 +22,7 @@ def admin_dashboard(
     token_info: dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.Dashboard import AdminDashboard
+    from App.Models.Classes.Dashboard import AdminDashboard
 
     TokenRepository(db, Company_portal_Url).check_token(token_info["Id"])
     dashb = AdminDashboard(db, Company_portal_Url, token_info)

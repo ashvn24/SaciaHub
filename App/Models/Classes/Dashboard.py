@@ -7,8 +7,8 @@ from sqlalchemy import text
 from datetime import datetime
 import logging
 from dateutil.relativedelta import relativedelta
-from Models.Classes.GetUser import GetUser
-from Models.Classes.TimesheetManager import ViewTimeSheetManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.TimesheetManager import ViewTimeSheetManager
 from Models.utils.dashboard import fetch_timesheets, request_dashboard
 from Models.utils.error_handler import ErrorHandler
 

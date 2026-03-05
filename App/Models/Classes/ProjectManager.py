@@ -8,8 +8,8 @@ from typing import Dict
 import logging
 from uuid import uuid4
 from datetime import datetime
-from Models.Classes.GetUser import GetUser
-from Models.Classes.folderManager import FolderManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.folderManager import FolderManager
 from Models.db.schemas import FolderSchema, ProjectSchema
 from Models.db import models
 from Models.utils.error_handler import ErrorHandler
@@ -123,14 +123,14 @@ class ProjectManager:
             project_data.pop("ClientID", None)
                 
             if project_data.get("VendorID") is not None:
-                from Models.Classes.VendorManager import VendorManager
+                from App.Models.Classes.VendorManager import VendorManager
                 vendor_info = VendorManager(self.db, self.token_info, self.Company_Portal_Url).get_vendor(project_data.get("VendorID"))[0]
                 project_data["VendorUUID"] = vendor_info["VendorUUID"]
                 project_data["VendorName"] = vendor_info["VendorName"]
             project_data.pop("VendorID", None)
             
             if project_data.get("PartnerID") is not None:
-                from Models.Classes.PartnerManager import PartnerManager
+                from App.Models.Classes.PartnerManager import PartnerManager
                 partner_info = PartnerManager(self.db, self.token_info, self.Company_Portal_Url).get_partner(project_data.get("PartnerID"))[0]
                 project_data["PartnerUUID"] = partner_info["PartnerUUID"]
                 project_data["PartnerName"] = partner_info["PartnerName"]
@@ -200,14 +200,14 @@ class ProjectManager:
             project_data.pop("ClientID", None)
             
             if project_data.get("VendorID") is not None:
-                from Models.Classes.VendorManager import VendorManager
+                from App.Models.Classes.VendorManager import VendorManager
                 vendor_info = VendorManager(self.db, self.token_info, self.Company_Portal_Url).get_vendor(project_data.get("VendorID"))[0]
                 project_data["VendorUUID"] = vendor_info["VendorUUID"]
                 project_data["VendorName"] = vendor_info["VendorName"]
             project_data.pop("VendorID", None)
             
             if project_data.get("PartnerID") is not None:
-                from Models.Classes.PartnerManager import PartnerManager
+                from App.Models.Classes.PartnerManager import PartnerManager
                 partner_info = PartnerManager(self.db, self.token_info, self.Company_Portal_Url).get_partner(project_data.get("PartnerID"))[0]
                 project_data["PartnerUUID"] = partner_info["PartnerUUID"]
                 project_data["PartnerName"] = partner_info["PartnerName"]
@@ -278,11 +278,11 @@ class ProjectManager:
                 client_info = self.get_client_info(ClientName)
                 project = self._get_project(clientUUID = client_info["ClientUUID"])
             elif VendorID is not None:
-                from Models.Classes.VendorManager import VendorManager
+                from App.Models.Classes.VendorManager import VendorManager
                 vendor_info = VendorManager(self.db, self.token_info, self.Company_Portal_Url).get_vendor(VendorID)
                 project = self._get_project(VendorUUID = vendor_info[0]["VendorUUID"])
             elif PartnerID is not None:
-                from Models.Classes.PartnerManager import PartnerManager
+                from App.Models.Classes.PartnerManager import PartnerManager
                 partner_info = PartnerManager(self.db, self.token_info, self.Company_Portal_Url).get_partner(PartnerID)
                 project = self._get_project(PartnerUUID = partner_info[0]["PartnerUUID"])
             else:

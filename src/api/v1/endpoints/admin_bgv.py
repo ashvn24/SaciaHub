@@ -35,7 +35,7 @@ def bgv_users(
     status: Optional[str] = None,
     filterBy: Optional[str] = Query(default=None),
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     require_admin(token_info)
@@ -51,7 +51,7 @@ async def bgv_report(
     pageNum: Optional[int] = None,
     own: Optional[int] = None,
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     require_admin(token_info)
@@ -66,7 +66,7 @@ async def update_bgv_report(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     require_admin(token_info)
@@ -79,7 +79,7 @@ def bgv_status_update(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     require_admin(token_info)

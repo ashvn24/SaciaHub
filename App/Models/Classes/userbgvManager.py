@@ -10,10 +10,10 @@ from logging import Logger
 from typing import Dict, Any
 
 from Models.db import models
-from Models.Classes.GetUser import GetUser
+from App.Models.Classes.GetUser import GetUser
 from Models.db.models import TenantInfo, User_bgv
 from Models.db.schemas import BritsUserBGVSchema, BritsUserBGVUpdateSchema
-from Models.Classes.token_authentication import decrypt_data, encrypt_data
+from App.Models.Classes.token_authentication import decrypt_data, encrypt_data
 from Models.db.Verification import MOBtoUAN, PAN_Verification, Aadhar_Verify, Passport_Verify, UAN_Verification
 from typing import Optional, List
 from .MediaManager import MediaManager

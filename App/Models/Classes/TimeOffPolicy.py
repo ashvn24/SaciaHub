@@ -6,7 +6,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 import logging
-from Models.Classes.GetUser import GetUser
+from App.Models.Classes.GetUser import GetUser
 from Models.db import models
 from Models.db.schemas import TimeOffPolicySchema
 from Models.utils.error_handler import ErrorHandler

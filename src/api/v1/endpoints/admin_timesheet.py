@@ -29,7 +29,7 @@ async def admin_timesheet_route(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.Report import TimesheetReportManager
+    from App.Models.Classes.Report import TimesheetReportManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     report_manager = TimesheetReportManager(db, request)
@@ -42,8 +42,8 @@ async def approve_timesheet(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.customerVerifier import CustomerUserVerifier
-    from Models.Classes.TimesheetManager import TimesheetManagerStatus
+    from App.Models.Classes.customerVerifier import CustomerUserVerifier
+    from App.Models.Classes.TimesheetManager import TimesheetManagerStatus
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     verifier = CustomerUserVerifier(db)

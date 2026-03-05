@@ -13,14 +13,14 @@ from fastapi import HTTPException, Request, status
 from fastapi.responses import JSONResponse
 import logging
 from sqlalchemy.exc import SQLAlchemyError
-from Models.Classes.ProjectManager import ProjectManager
-from Models.Classes.ClientManager import ClientManager
-from Models.Classes.SOWManager import SOWManager
-from Models.Classes.GetUser import GetUser
-from Models.Classes.Notification import ManageNotification
+from App.Models.Classes.ProjectManager import ProjectManager
+from App.Models.Classes.ClientManager import ClientManager
+from App.Models.Classes.SOWManager import SOWManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.Notification import ManageNotification
 from Models.db.schemas import DeleteTimeSheet, TimesheetSchema, UpdateTimeSheet
 from Models.db import models
-from Models.Classes.TenantSettings import TenantSettingsManager
+from App.Models.Classes.TenantSettings import TenantSettingsManager
 from Models.utils.send_mail import send_mail
 import sys
 import traceback

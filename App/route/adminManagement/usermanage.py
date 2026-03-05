@@ -3,13 +3,13 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from requests import Session
 from Models.utils.tokenmanage import token
-from Models.Classes.token_authentication import decode_token
+from App.Models.Classes.token_authentication import decode_token
 from Models import Classes
 from Models.db import schemas
 from Models.db import get_db
 from Models.utils.error_handler import ErrorHandler
-from Models.Classes.AdminUserManager import UserManager
-from Models.Classes.UserManager import UserAuthManager
+from App.Models.Classes.AdminUserManager import UserManager
+from App.Models.Classes.UserManager import UserAuthManager
 
 
 logger = logging.getLogger(__name__)

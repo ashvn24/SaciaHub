@@ -8,10 +8,10 @@ from fastapi.responses import JSONResponse
 import pandas as pd
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
-from Models.Classes.UserManager import UserAuthManager
-from Models.Classes.TenantCreation import SchemaManager
+from App.Models.Classes.UserManager import UserAuthManager
+from App.Models.Classes.TenantCreation import SchemaManager
 from Models.utils.send_mail import send_mail_func
-from Models.Classes.token_authentication import (
+from App.Models.Classes.token_authentication import (
     decode_token,
     generate_random_password,
     get_password_hash,

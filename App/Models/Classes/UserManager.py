@@ -17,15 +17,15 @@ from typing import Dict, Optional
 import logging
 from Models.utils.tokenmanage import token
 from Models.utils.serializer import make_serializable
-from Models.Classes.userbgvManager import UserBGVManager
-from Models.Classes.GetUser import GetUser
-from Models.Classes.TenantSettings import TenantSettingsManager
-from Models.Classes.token_authentication import blacklisted_token, decrypt_data, generate_random_password
+from App.Models.Classes.userbgvManager import UserBGVManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.TenantSettings import TenantSettingsManager
+from App.Models.Classes.token_authentication import blacklisted_token, decrypt_data, generate_random_password
 
 from Models.utils.TimesheetDetails import TimesheetDetails
 from Models.db import models
 from Models.db.schemas import SignInSchema, ForgotPassword, UpdatePassword, resendSchema
-from Models.Classes.token_authentication import verify_password, create_access_token, create_refresh_token, get_password_hash
+from App.Models.Classes.token_authentication import verify_password, create_access_token, create_refresh_token, get_password_hash
 from Models.utils.send_mail import send_mail_func
 
 from sendgrid import SendGridAPIClient

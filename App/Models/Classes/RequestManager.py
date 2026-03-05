@@ -11,18 +11,18 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from fastapi.responses import JSONResponse
-from Models.Classes.SOWManager import SOWManager
-from Models.Classes.ClientManager import ClientManager
-from Models.Classes.ProjectManager import ProjectManager
-from Models.Classes.TimesheetManager import CreateTimeSheetManager
-from Models.Classes.token_authentication import encrypt_data
-from Models.Classes.TenantSettings import TenantSettingsManager
-from Models.Classes.GetUser import GetUser
-from Models.Classes.Notification import ManageNotification
+from App.Models.Classes.SOWManager import SOWManager
+from App.Models.Classes.ClientManager import ClientManager
+from App.Models.Classes.ProjectManager import ProjectManager
+from App.Models.Classes.TimesheetManager import CreateTimeSheetManager
+from App.Models.Classes.token_authentication import encrypt_data
+from App.Models.Classes.TenantSettings import TenantSettingsManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.Notification import ManageNotification
 from Models.utils.send_mail import send_mail
 from Models.db import models
 from Models.db.schemas import DeleteRequest, RequestSchema, UpdateRequestSchema, BritsUserBGVUpdateSchema
-from Models.Classes.userbgvManager import UserBGVManager
+from App.Models.Classes.userbgvManager import UserBGVManager
 import sys
 import os
 from Models.utils.error_handler import ErrorHandler

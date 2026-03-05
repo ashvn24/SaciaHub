@@ -21,8 +21,8 @@ if _app_dir not in sys.path:
 
 
 def get_legacy_classes():
-    """Import and return the legacy Models.Classes module."""
-    return importlib.import_module("Models.Classes")
+    """Import and return the legacy App.Models.Classes module."""
+    return importlib.import_module("App.Models.Classes")
 
 
 def get_legacy_db():

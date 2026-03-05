@@ -1,7 +1,7 @@
 # Lazy imports to avoid circular dependency chains.
 # Import classes directly from their modules instead:
-#   from Models.Classes.UserManager import UserAuthManager
-#   from Models.Classes.GetUser import GetUser
+#   from App.Models.Classes.UserManager import UserAuthManager
+#   from App.Models.Classes.GetUser import GetUser
 #   etc.
 
 

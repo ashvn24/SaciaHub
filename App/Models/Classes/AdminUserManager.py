@@ -8,12 +8,12 @@ from datetime import datetime, timedelta
 import uuid
 import logging
 
-from Models.Classes.GetUser import GetUser
-from Models.Classes.folderManager import FolderManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.folderManager import FolderManager
 from Models.db import models
 from Models.db.schemas import BritsUserSchema, FolderSchema
 from Models.utils.send_mail import send_mail_func
-from Models.Classes.token_authentication import create_access_token, generate_random_password, get_password_hash
+from App.Models.Classes.token_authentication import create_access_token, generate_random_password, get_password_hash
 from Models.utils.error_handler import ErrorHandler
 
 logger = logging.getLogger(__name__)

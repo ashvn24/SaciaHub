@@ -3,9 +3,9 @@ from datetime import date, datetime
 import pytz
 from sqlalchemy.sql import text
 
-from Models.Classes.ClientManager import ClientManager
-from Models.Classes.ProjectManager import ProjectManager
-from Models.Classes.SOWManager import SOWManager
+from App.Models.Classes.ClientManager import ClientManager
+from App.Models.Classes.ProjectManager import ProjectManager
+from App.Models.Classes.SOWManager import SOWManager
 from Models.utils.timeSheet_helper import get_month_range, get_week_ranges, group_timesheets
 
 

@@ -1,7 +1,7 @@
 import logging
 from fastapi import APIRouter
-from Models.Classes.Dashboard import get_hr_dashboard
-from Models.Classes.token_authentication import decode_token
+from App.Models.Classes.Dashboard import get_hr_dashboard
+from App.Models.Classes.token_authentication import decode_token
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from typing import Optional

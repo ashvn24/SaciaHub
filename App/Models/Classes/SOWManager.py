@@ -8,8 +8,8 @@ from typing import Dict
 import logging
 from uuid import uuid4
 from datetime import datetime
-from Models.Classes.GetUser import GetUser
-from Models.Classes.folderManager import FolderManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.folderManager import FolderManager
 from Models.db.schemas import FolderSchema, SOWSchema
 from Models.db import models
 from Models.utils.error_handler import ErrorHandler
@@ -146,7 +146,7 @@ class SOWManager:
             sow_data.pop("VendorID", None)
             
             if sow_data.get("PartnerID") is not None:
-                from Models.Classes.PartnerManager import PartnerManager
+                from App.Models.Classes.PartnerManager import PartnerManager
                 partner_info = PartnerManager(self.db, self.token_info, self.Company_Portal_Url).get_partner(sow_data.get("PartnerID"))[0]
                 sow_data["PartnerUUID"] = partner_info["PartnerUUID"]
                 sow_data["PartnerName"] = partner_info["PartnerName"]
@@ -384,7 +384,7 @@ class SOWManager:
                 print(vendor_info)
                 sow = self._get_sow(vendorUUID = vendor_info["VendorUUID"])
             elif PartnerID is not None:
-                from Models.Classes.PartnerManager import PartnerManager
+                from App.Models.Classes.PartnerManager import PartnerManager
                 partner_info = PartnerManager(self.db, self.token_info, self.Company_Portal_Url).get_partner(PartnerID)[0]
                 sow = self._get_sow(partnerUUID = partner_info["PartnerUUID"])
             else:

@@ -30,7 +30,7 @@ async def update_user_status_route(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.AdminUserManager import UserManager
+    from App.Models.Classes.AdminUserManager import UserManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     um = UserManager(db)
@@ -43,7 +43,7 @@ async def user_register_route(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.AdminUserManager import UserManager
+    from App.Models.Classes.AdminUserManager import UserManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     um = UserManager(db)
@@ -57,7 +57,7 @@ async def impersonate_role(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     user = UserAuthManager(db, Company_Portal_Url)
@@ -86,7 +86,7 @@ async def get_users(
     order: Optional[int] = 1,
     filterBy: Optional[str] = None,
 ):
-    from Models.Classes.GetUser import GetUser
+    from App.Models.Classes.GetUser import GetUser
 
     _check_token(db, company_portal_url, token_info["Id"])
     user = GetUser(db, company_portal_url)
@@ -99,7 +99,7 @@ async def delete_user(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.GetUser import GetUser
+    from App.Models.Classes.GetUser import GetUser
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     user = GetUser(db, data.Company_Portal_Url)
@@ -113,7 +113,7 @@ async def update_user(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.AdminUserManager import UserManager
+    from App.Models.Classes.AdminUserManager import UserManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     user = UserManager(db)

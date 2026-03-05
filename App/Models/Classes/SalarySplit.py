@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 from Models.db.schemas import SalarySplit
-from Models.Classes.GetUser import GetUser
+from App.Models.Classes.GetUser import GetUser
 from Models.db import models
 import logging
 from Models.utils.error_handler import ErrorHandler

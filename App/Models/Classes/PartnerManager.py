@@ -7,8 +7,8 @@ from typing import Dict
 import logging
 from uuid import uuid4
 from datetime import datetime
-from Models.Classes.GetUser import GetUser
-from Models.Classes.folderManager import FolderManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.folderManager import FolderManager
 from Models.db import models
 from Models.db.schemas import FolderSchema, PartnerSchema
 from Models.utils.error_handler import ErrorHandler

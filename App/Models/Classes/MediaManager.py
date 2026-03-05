@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from typing import List, Dict
 from sqlalchemy import text
 import logging
-from Models.Classes.GetUser import GetUser
+from App.Models.Classes.GetUser import GetUser
 from Models.db import models
 from Models.db.s3Storage import handle_image_in_spaces
 from Models.utils.error_handler import ErrorHandler

@@ -1,7 +1,7 @@
 import logging
 from fastapi import APIRouter
-from Models.Classes.Dashboard import ManagerDashboardExtension, get_manager_dashboard
-from Models.Classes.token_authentication import decode_token
+from App.Models.Classes.Dashboard import ManagerDashboardExtension, get_manager_dashboard
+from App.Models.Classes.token_authentication import decode_token
 from Models.db.db_connection import SessionLocal
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.responses import JSONResponse

@@ -7,8 +7,8 @@ from sqlalchemy import text
 from typing import Dict, List
 import logging
 from uuid import uuid4
-from Models.Classes.GetUser import GetUser
-from Models.Classes.folderManager import FolderManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.folderManager import FolderManager
 from Models.db.schemas import ClientSchema, FolderSchema, TimpolicySchema
 from Models.db import models
 from Models.utils.error_handler import ErrorHandler

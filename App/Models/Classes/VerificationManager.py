@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select
 import json
 
-from Models.Classes.token_authentication import decrypt_data, encrypt_data
+from App.Models.Classes.token_authentication import decrypt_data, encrypt_data
 from Models.db.Verification import Aadhar_Verify, Criminal_Verification, PAN_Verification, Passport_Verify, UAN_Verification
 from Models.db.schemas import verification
 from Models.db.models import User_bgv

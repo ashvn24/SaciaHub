@@ -25,7 +25,7 @@ async def get_dashboard_data(
     type: Optional[str] = None,
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.Dashboard import get_hr_dashboard
+    from App.Models.Classes.Dashboard import get_hr_dashboard
 
     TokenRepository(db, Company_portal_Url).check_token(token_info["Id"])
     return get_hr_dashboard(db, Company_portal_Url, token_info, type)

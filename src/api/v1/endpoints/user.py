@@ -65,7 +65,7 @@ async def signin_route(
     data: SignInSchema,
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.App.Models.Classes.UserManager import UserAuthManager
 
     auth_manager = UserAuthManager(db, data.Company_Portal_Url)
     result = await auth_manager.signin(request, response, data)
@@ -88,7 +88,7 @@ def sso_login(
     Company_Portal_Url: str = Form(""),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.App.Models.Classes.UserManager import UserAuthManager
     from src.core.exceptions import BadRequestException
 
     udata = UserAuthManager(db, Company_Portal_Url)
@@ -117,7 +117,7 @@ def authorized(
     Company_Portal_Url: str,
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     auth = UserAuthManager(db, Company_Portal_Url)
     code = request.query_params.get("code")
@@ -168,7 +168,7 @@ async def verify_2fa_route(
     Company_Portal_Url: str,
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     auth_manager = UserAuthManager(db, Company_Portal_Url)
     is_verified = await auth_manager.await_2fa_verification(token, email, timeout=120)
@@ -195,7 +195,7 @@ async def signout_route(
     token: str = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     auth_manager = UserAuthManager(db, Company_Portal_Url)
     return auth_manager.signout(token)
@@ -203,7 +203,7 @@ async def signout_route(
 
 @user_router.post("/refresh/")
 async def refresh_access_token(token_info: Dict = Depends(get_current_user)):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     auth_manager = UserAuthManager(db=None, Company_portal_Url=None)
     result = auth_manager.refresh_token(token_info)
@@ -223,7 +223,7 @@ async def update_profile(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     auth_manager = UserAuthManager(db, Company_Portal_Url)
@@ -232,7 +232,7 @@ async def update_profile(
 
 @user_router.post("/forgot-password/")
 async def forgot_password(data: ForgotPassword, db: Session = Depends(get_db)):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     auth_manager = UserAuthManager(db, data.Company_Portal_Url)
     return auth_manager.forgot_password(data)
@@ -240,7 +240,7 @@ async def forgot_password(data: ForgotPassword, db: Session = Depends(get_db)):
 
 @user_router.post("/verify-otp/")
 async def verify_otp(data: otpSchema, db: Session = Depends(get_db)):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
     from src.core.exceptions import BadRequestException
 
     auth_manager = UserAuthManager(db, data.Company_Portal_Url)
@@ -262,7 +262,7 @@ async def resend_mail(
     mail: Optional[str] = None,
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     auth_manager = UserAuthManager(db, data.Company_Portal_Url)
     return auth_manager.resend_mail_or_otp(data, mail)
@@ -274,7 +274,7 @@ async def update_password(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     auth_manager = UserAuthManager(db, data.Company_Portal_Url)
@@ -289,7 +289,7 @@ async def user_bgv_route(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     bgv_manager = UserBGVManager(db, data.Company_Portal_Url, logger)
@@ -303,7 +303,7 @@ async def update_user_bgv_route(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     bgv_manager = UserBGVManager(db, Company_Portal_Url, logger)
@@ -326,7 +326,7 @@ async def adhar_link_route(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     bgv_manager = UserBGVManager(db, Company_Portal_Url, logger)
@@ -340,8 +340,8 @@ async def get_user_bgv_route(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
-    from Models.Classes.violation import violation
+    from App.Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.violation import violation
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     bgv_manager = UserBGVManager(db, Company_Portal_Url, logger)
@@ -364,7 +364,7 @@ async def upload_route(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.MediaManager import MediaManager
+    from App.Models.Classes.MediaManager import MediaManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     media_manager = MediaManager(db, token_info, Company_Portal_Url)
@@ -380,7 +380,7 @@ async def get_files_route(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.MediaManager import MediaManager
+    from App.Models.Classes.MediaManager import MediaManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     media_manager = MediaManager(db, token_info, Company_Portal_Url)
@@ -412,7 +412,7 @@ async def create_time_sheet(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.TimesheetManager import CreateTimeSheetManager
+    from App.Models.Classes.TimesheetManager import CreateTimeSheetManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     time_sheet_manager = CreateTimeSheetManager(db, token_info, data.Company_Portal_Url)
@@ -437,8 +437,8 @@ async def get_time_sheets(
     db: Session = Depends(get_db),
     filterBy: Optional[str] = Query(None),
 ):
-    from Models.Classes.GetUser import GetUser
-    from Models.Classes.TimesheetManager import ViewTimeSheetManager
+    from App.Models.Classes.GetUser import GetUser
+    from App.Models.Classes.TimesheetManager import ViewTimeSheetManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     time_sheet_manager = ViewTimeSheetManager(db, Company_Portal_Url, token_info)
@@ -460,7 +460,7 @@ async def update_time_sheet(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.TimesheetManager import CreateTimeSheetManager
+    from App.Models.Classes.TimesheetManager import CreateTimeSheetManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     time_sheet_manager = CreateTimeSheetManager(db, token_info, data.Company_Portal_Url)
@@ -473,7 +473,7 @@ async def delete_time_sheets(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.TimesheetManager import CreateTimeSheetManager
+    from App.Models.Classes.TimesheetManager import CreateTimeSheetManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     time_sheet_manager = CreateTimeSheetManager(db, token_info, data.Company_Portal_Url)
@@ -487,7 +487,7 @@ async def get_timesheet_counts(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.Dashboard import TimesheetCountService
+    from App.Models.Classes.Dashboard import TimesheetCountService
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     service = TimesheetCountService(db, token_info, Company_Portal_Url)
@@ -502,7 +502,7 @@ async def create_request(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.RequestManager import RequestManager
+    from App.Models.Classes.RequestManager import RequestManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     request_manager = RequestManager(db, token_info)
@@ -523,8 +523,8 @@ async def get_requests(
     order: Optional[int] = 1,
     Status: Optional[str] = None,
 ):
-    from Models.Classes.GetUser import GetUser
-    from Models.Classes.RequestManager import RequestManager
+    from App.Models.Classes.GetUser import GetUser
+    from App.Models.Classes.RequestManager import RequestManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     request_manager = RequestManager(db, token_info)
@@ -547,7 +547,7 @@ async def update_request_route(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.RequestManager import RequestManager
+    from App.Models.Classes.RequestManager import RequestManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     request_manager = RequestManager(db, token_info)
@@ -560,7 +560,7 @@ async def delete_request_route(
     token_info: Dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.RequestManager import RequestManager
+    from App.Models.Classes.RequestManager import RequestManager
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     request_manager = RequestManager(db, token_info)
@@ -577,7 +577,7 @@ async def get_request_counts(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.Dashboard import RequestCountsService
+    from App.Models.Classes.Dashboard import RequestCountsService
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     service = RequestCountsService(db, token_info, Company_Portal_Url)
@@ -592,8 +592,8 @@ async def get_notification(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.customerVerifier import CustomerUserVerifier
-    from Models.Classes.Notification import ManageNotification
+    from App.Models.Classes.customerVerifier import CustomerUserVerifier
+    from App.Models.Classes.Notification import ManageNotification
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     cust = CustomerUserVerifier(db)
@@ -609,8 +609,8 @@ async def update_notification(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.customerVerifier import CustomerUserVerifier
-    from Models.Classes.Notification import ManageNotification
+    from App.Models.Classes.customerVerifier import CustomerUserVerifier
+    from App.Models.Classes.Notification import ManageNotification
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     cust = CustomerUserVerifier(db)
@@ -630,7 +630,7 @@ async def get_holiday_user(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.HolidayPolicy import ManageHolidayPolicy
+    from App.Models.Classes.HolidayPolicy import ManageHolidayPolicy
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     return await ManageHolidayPolicy(db, token_info).getUserHoliday(Company_Portal_Url)
@@ -642,7 +642,7 @@ def create_bgv_report(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     UserBGVManager(db).create_bgv_report(token_info["Id"], Company_Portal_Url)
     _check_token(db, Company_Portal_Url, token_info["Id"])
@@ -656,9 +656,9 @@ async def get_rem_hours(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.HolidayPolicy import ManageHolidayPolicy
-    from Models.Classes.RequestManager import RequestManager
-    from Models.Classes.TimesheetManager import ViewTimeSheetManager
+    from App.Models.Classes.HolidayPolicy import ManageHolidayPolicy
+    from App.Models.Classes.RequestManager import RequestManager
+    from App.Models.Classes.TimesheetManager import ViewTimeSheetManager
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     own = 1

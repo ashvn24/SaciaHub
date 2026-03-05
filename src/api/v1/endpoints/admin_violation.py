@@ -30,10 +30,10 @@ async def report_user(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.GetUser import GetUser
-    from Models.Classes.UserManager import UserAuthManager
-    from Models.Classes.userbgvManager import UserBGVManager
-    from Models.Classes.violation import violation
+    from App.Models.Classes.GetUser import GetUser
+    from App.Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.violation import violation
 
     _check_token(db, data.Company_Portal_Url, token_info["Id"])
     require_admin(token_info)
@@ -61,8 +61,8 @@ async def get_violation(
     token_info=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.GetUser import GetUser
-    from Models.Classes.violation import violation
+    from App.Models.Classes.GetUser import GetUser
+    from App.Models.Classes.violation import violation
 
     _check_token(db, Company_Portal_Url, token_info["Id"])
     require_admin(token_info)

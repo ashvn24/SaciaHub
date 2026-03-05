@@ -15,10 +15,10 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 import logging
 
-from Models.Classes.TimesheetManager import ViewTimeSheetManager
-from Models.Classes.GetUser import GetUser
-from Models.Classes.UserManager import UserAuthManager
-from Models.Classes.customerVerifier import CustomerUserVerifier
+from App.Models.Classes.TimesheetManager import ViewTimeSheetManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.UserManager import UserAuthManager
+from App.Models.Classes.customerVerifier import CustomerUserVerifier
 from Models.db.schemas import AdminTimesheet
 from decimal import Decimal
 from collections import defaultdict

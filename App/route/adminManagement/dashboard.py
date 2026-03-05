@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import JSONResponse
 from requests import Session
-from Models.Classes.Dashboard import AdminDashboard
+from App.Models.Classes.Dashboard import AdminDashboard
 from Models.utils.tokenmanage import token
 from Models.utils.utils import util
-from Models.Classes.token_authentication import decode_token
+from App.Models.Classes.token_authentication import decode_token
 from Models import Classes
 from Models.db import schemas
 from Models.db import get_db

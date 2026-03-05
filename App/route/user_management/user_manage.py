@@ -27,19 +27,19 @@ import requests
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from Models.Classes.violation import violation
+from App.Models.Classes.violation import violation
 from Models.utils.tokenmanage import token
-from Models.Classes.HolidayPolicy import ManageHolidayPolicy
-from Models.Classes.Dashboard import RequestCountsService, TimesheetCountService
-from Models.Classes.UserManager import UserAuthManager
-from Models.Classes.MediaManager import MediaManager
-from Models.Classes.userbgvManager import UserBGVManager
-from Models.Classes.logger import APILogger
-from Models.Classes.customerVerifier import CustomerUserVerifier
-from Models.Classes.Notification import ManageNotification
-from Models.Classes.RequestManager import RequestManager
-from Models.Classes.GetUser import GetUser
-from Models.Classes.TimesheetManager import CreateTimeSheetManager, ViewTimeSheetManager
+from App.Models.Classes.HolidayPolicy import ManageHolidayPolicy
+from App.Models.Classes.Dashboard import RequestCountsService, TimesheetCountService
+from App.Models.Classes.UserManager import UserAuthManager
+from App.Models.Classes.MediaManager import MediaManager
+from App.Models.Classes.userbgvManager import UserBGVManager
+from App.Models.Classes.logger import APILogger
+from App.Models.Classes.customerVerifier import CustomerUserVerifier
+from App.Models.Classes.Notification import ManageNotification
+from App.Models.Classes.RequestManager import RequestManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.TimesheetManager import CreateTimeSheetManager, ViewTimeSheetManager
 from Models.db.schemas import (
     BritsUserBGVSchema,
     BritsUserBGVUpdateSchema,
@@ -58,7 +58,7 @@ from Models.db.schemas import (
     UpdateNotification,
 )
 from Models.db.db_connection import SessionLocal, engine
-from Models.Classes.token_authentication import create_access_token, decode_token
+from App.Models.Classes.token_authentication import create_access_token, decode_token
 from dotenv import load_dotenv
 from msal import ConfidentialClientApplication
 from typing import Union, List

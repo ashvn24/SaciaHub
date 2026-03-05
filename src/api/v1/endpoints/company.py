@@ -91,8 +91,8 @@ async def activate_customer_route(
     Company_ShortName: str,
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.TenantCreation import SchemaManager
-    from Models.Classes.token_authentication import generate_random_password, get_password_hash
+    from App.Models.Classes.TenantCreation import SchemaManager
+    from App.Models.Classes.token_authentication import generate_random_password, get_password_hash
     from Models.db import models
     from Models.utils.send_mail import send_mail_func
 
@@ -238,8 +238,8 @@ async def reset_password_route(
     # token_info: dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.UserManager import UserAuthManager
-    from Models.Classes.token_authentication import get_password_hash
+    from App.Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.token_authentication import get_password_hash
     from Models.db import models
     from Models.utils.error_handler import ErrorHandler
 
@@ -319,8 +319,8 @@ async def upload_csv(
 ):
     from collections import defaultdict
 
-    from Models.Classes.TenantCreation import SchemaManager
-    from Models.Classes.token_authentication import get_password_hash
+    from App.Models.Classes.TenantCreation import SchemaManager
+    from App.Models.Classes.token_authentication import get_password_hash
     from Models.db import models
 
     contents = await file.read()

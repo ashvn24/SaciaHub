@@ -21,7 +21,7 @@ async def get_dashboard_data(
     token_info: dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.Dashboard import ManagerDashboardExtension
+    from App.Models.Classes.Dashboard import ManagerDashboardExtension
 
     dashboard = ManagerDashboardExtension(db, Company_portal_Url, token_info)
     return dashboard.get_manager_dashboard_data()

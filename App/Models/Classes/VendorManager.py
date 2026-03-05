@@ -7,10 +7,10 @@ from typing import Dict
 import logging
 from uuid import uuid4
 from datetime import datetime
-from Models.Classes.GetUser import GetUser
-from Models.Classes.folderManager import FolderManager
-from Models.Classes.ProjectManager import ProjectManager
-from Models.Classes.SOWManager import SOWManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.folderManager import FolderManager
+from App.Models.Classes.ProjectManager import ProjectManager
+from App.Models.Classes.SOWManager import SOWManager
 from Models.db.schemas import FolderSchema, VendorSchema
 from Models.db import models
 from uuid import UUID

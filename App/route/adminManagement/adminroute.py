@@ -4,26 +4,26 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 import logging
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 from Models.utils.tokenmanage import token
-from Models.Classes.VerificationManager import Verification
-from Models.Classes.SalarySplit import SalaryManager
+from App.Models.Classes.VerificationManager import Verification
+from App.Models.Classes.SalarySplit import SalaryManager
 from Models.utils.serializer import serialize_non_null_data
-from Models.Classes.userbgvManager import UserBGVManager
-from Models.Classes.folderManager import FolderManager
-from Models.Classes.PartnerManager import PartnerManager
-from Models.Classes.UserManager import UserAuthManager
-from Models.Classes.VendorManager import VendorManager
-from Models.Classes.SOWManager import SOWManager
-from Models.Classes.ProjectManager import ProjectManager
-from Models.Classes.ClientManager import ClientManager
-from Models.Classes.RequestManager import RequestManager
-from Models.Classes.AdminUserManager import UserManager
-from Models.Classes.HolidayPolicy import ManageHolidayPolicy
-from Models.Classes.TimeOffPolicy import ManageTimeoffPolicy
-from Models.Classes.Report import ReportGenerator, TimesheetReportManager
-from Models.Classes.TenantSettings import TenantSettingsManager
-from Models.Classes.GetUser import GetUser
-from Models.Classes.TimesheetManager import ViewTimeSheetManager, TimesheetManagerStatus
-from Models.Classes.customerVerifier import CustomerUserVerifier
+from App.Models.Classes.userbgvManager import UserBGVManager
+from App.Models.Classes.folderManager import FolderManager
+from App.Models.Classes.PartnerManager import PartnerManager
+from App.Models.Classes.UserManager import UserAuthManager
+from App.Models.Classes.VendorManager import VendorManager
+from App.Models.Classes.SOWManager import SOWManager
+from App.Models.Classes.ProjectManager import ProjectManager
+from App.Models.Classes.ClientManager import ClientManager
+from App.Models.Classes.RequestManager import RequestManager
+from App.Models.Classes.AdminUserManager import UserManager
+from App.Models.Classes.HolidayPolicy import ManageHolidayPolicy
+from App.Models.Classes.TimeOffPolicy import ManageTimeoffPolicy
+from App.Models.Classes.Report import ReportGenerator, TimesheetReportManager
+from App.Models.Classes.TenantSettings import TenantSettingsManager
+from App.Models.Classes.GetUser import GetUser
+from App.Models.Classes.TimesheetManager import ViewTimeSheetManager, TimesheetManagerStatus
+from App.Models.Classes.customerVerifier import CustomerUserVerifier
 from Models.db.schemas import (
     AdminTimesheet,
     AssignClientSchema,
@@ -48,7 +48,7 @@ from Models.db.schemas import (
     verification,
     TenantNotificationSettings
 )
-from Models.Classes.token_authentication import decode_token
+from App.Models.Classes.token_authentication import decode_token
 from Models.db.db_connection import SessionLocal
 from sqlalchemy.orm import Session
 from typing import Optional, List

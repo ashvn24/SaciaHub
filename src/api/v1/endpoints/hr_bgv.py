@@ -24,8 +24,8 @@ async def getbgvinfo(
     token_info: dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.GetUser import GetUser
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.GetUser import GetUser
+    from App.Models.Classes.userbgvManager import UserBGVManager
 
     require_admin(token_info)
     TokenRepository(db, Company_portal_Url).check_token(token_info["Id"])
@@ -44,8 +44,8 @@ async def update_bgv_info(
     token_info: dict = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    from Models.Classes.GetUser import GetUser
-    from Models.Classes.userbgvManager import UserBGVManager
+    from App.Models.Classes.GetUser import GetUser
+    from App.Models.Classes.userbgvManager import UserBGVManager
     from Models.db import schemas
 
     require_admin(token_info)
