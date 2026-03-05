@@ -212,13 +212,15 @@ class UserBGVManager:
             if type == "create":
                 return result
             if not result:
-                raise error.error("User BGV not found", 404, "Not Found")
+                return {"message": "No BGV found", "status": 200}
             user_bgv = dict(result._mapping)
             encrypted_fields = self.encrypted_fields
             for field in encrypted_fields:
                 if field in user_bgv and user_bgv[field]:
                     user_bgv[field] = decrypt_data(user_bgv[field])
             return user_bgv
+        except HTTPException as he:
+            raise he
         except Exception as e:
             print("Exception in get_user_bgv", e)
             return error.error(str(e), 400, "Bad Request")
@@ -1096,6 +1098,8 @@ class UserBGVManager:
         GetUser(self.db, self.company_portal_url).verify_user(token_info)
         try:
             user_bgv = self.get_user_bgv(token_info["Id"])
+            if "message" in user_bgv and user_bgv.get("status") == 200:
+                return user_bgv
             user_uuid = str(user_bgv.get("UserUUID"))
             token_id = str(token_info["Id"]).lower().strip()
 
@@ -1675,7 +1679,7 @@ class UserBGVManager:
             query, {"UserUUID": user_uuid}).mappings().one_or_none()
 
         if not result:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User BGV report not found")
+            return {"message": "No BGV report found", "status": 200}
         result_dict = dict(result)
         encrypted_fields = self.encrypted_fields
         for field in encrypted_fields:
