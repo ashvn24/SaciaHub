@@ -65,7 +65,7 @@ async def signin_route(
     data: SignInSchema,
     db: Session = Depends(get_db),
 ):
-    from App.App.Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
 
     auth_manager = UserAuthManager(db, data.Company_Portal_Url)
     result = await auth_manager.signin(request, response, data)
@@ -88,7 +88,7 @@ def sso_login(
     Company_Portal_Url: str = Form(""),
     db: Session = Depends(get_db),
 ):
-    from App.App.Models.Classes.UserManager import UserAuthManager
+    from App.Models.Classes.UserManager import UserAuthManager
     from src.core.exceptions import BadRequestException
 
     udata = UserAuthManager(db, Company_Portal_Url)
